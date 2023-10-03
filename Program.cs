@@ -10,7 +10,7 @@ var app = builder.Build();
 
 app.Services.UseScheduler(scheduler =>
 {
-    scheduler.Schedule<CheckForString>().EveryThirtySeconds();
+    scheduler.Schedule<CheckForString>().Hourly();
 
 });
 

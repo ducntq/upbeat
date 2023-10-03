@@ -22,6 +22,7 @@ namespace upbeat.Tasks
             {
                 _logger.LogInformation("Checking for: " + config.Name);
                 HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Add("User-Agent", "Upbeat");
                 var content = await client.GetAsync(config.Url);
                 var body = await content.Content.ReadAsStringAsync();
                 if (!body.Contains(config.Pattern)) _logger.LogCritical("Pattern not found on: " + config.Name);
